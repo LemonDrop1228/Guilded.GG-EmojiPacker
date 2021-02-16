@@ -1,9 +1,11 @@
 #EmojiPacker
+
 *A C# WPF tool to create emoji packs.*
 
 This app was built with Guilded.gg in mind, as it utlizes the pack defination format provided [here](https://support.guilded.gg/hc/en-us/articles/360058870494-Emote-pack-import-support-with-Guilded-Developers- "here")
 
 #Features
+
 
 The tool allows you to easily and quickly create emoji packs using a drag and drop approach. It has the following features:
 
