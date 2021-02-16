@@ -29,5 +29,5 @@ The tool allows you to easily and quickly create emoji packs using a drag and dr
 [![](https://i.imgur.com/jfs8Ob3.gif)]()
 
 *click to view gif preview*
-[![](https://i.imgur.com/bMJ0Kdm.gif)]()
+[![](https://i.imgur.com/9GVkG7g.gif)]()
 
