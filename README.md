@@ -4,6 +4,10 @@
 
 This app was built with Guilded.gg in mind, as it utlizes the pack defination format provided [here](https://support.guilded.gg/hc/en-us/articles/360058870494-Emote-pack-import-support-with-Guilded-Developers- "here")
 
+# DownLoads
+
+You can get the latest version [**HERE**](https://github.com/LemonDrop1228/Guilded.GG-EmojiPacker/releases/)
+
 # Features
 
 
