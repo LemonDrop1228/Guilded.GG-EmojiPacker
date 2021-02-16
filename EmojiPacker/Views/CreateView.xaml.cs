@@ -95,6 +95,12 @@ namespace EmojiPacker.Views
         public ICommand RemoveEmoji => new RelayCommand(o => {
             CurrentPack.Emojis.Remove(o as EmojiDefinition);
         }, o => true);
+
+        private void DragDropCard_Drop(object sender, DragEventArgs e)
+        {
+            string url = (string)e.Data.GetData(typeof(string));
+            CurrentPack.Emojis.Add(new EmojiDefinition() { Url = url });
+        }
     }
 
     public class RelayCommand : ICommand

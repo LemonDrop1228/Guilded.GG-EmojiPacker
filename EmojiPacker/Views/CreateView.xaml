@@ -15,7 +15,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
-                        <RowDefinition Height="0.125*"/>
+                        <RowDefinition Height="0.175*"/>
                     </Grid.RowDefinitions>
                     <Border Padding="3 3 3 9">
                         <Grid>
@@ -68,35 +68,53 @@
                                 </ListBox>
                             </ScrollViewer>
                         </Grid>
-                    </Border>
-                    <Border Grid.Row="1" Padding="5">
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <Button x:Name="AddEmoteButton" Margin="0 0 5 0"
-                              Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                              ToolTip="Add Emoji" Click="AddEmoteButton_Click">
-                                <materialDesign:PackIcon
-                                Kind="Add"
-                                Height="24"
-                                Width="24" />
-                            </Button>
-                            <Button x:Name="ClearPackButton" Margin="0 0 5 0"
-                              Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                              ToolTip="Clear Pack" Click="ClearPackButton_Click">
-                                <materialDesign:PackIcon
-                                Kind="broom"
-                                Height="24"
-                                Width="24" />
-                            </Button>
-                            <Button x:Name="SavePackButton" Margin="0 0 5 0"
-                              Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
-                              ToolTip="Export Pack" Click="SavePackButton_Click">
-                                <materialDesign:PackIcon
-                                Kind="FloppyDisc"
-                                Height="24"
-                                Width="24" />
-                            </Button>
+                    </Border>                    
+                    <Border Grid.Row="1" Padding="5 0 0 5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.35*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Column="1">
+                                <Button x:Name="AddEmoteButton" Margin="0 0 5 0"
+                                  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                  ToolTip="Add Emoji" Click="AddEmoteButton_Click">
+                                    <materialDesign:PackIcon
+                                    Kind="Add"
+                                    Height="24"
+                                    Width="24" />
+                                </Button>
+                                <Button x:Name="ClearPackButton" Margin="0 0 5 0"
+                                  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                  ToolTip="Clear Pack" Click="ClearPackButton_Click">
+                                    <materialDesign:PackIcon
+                                    Kind="broom"
+                                    Height="24"
+                                    Width="24" />
+                                </Button>
+                                <Button x:Name="SavePackButton" Margin="0 0 5 0"
+                                  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                                  ToolTip="Export Pack" Click="SavePackButton_Click">
+                                    <materialDesign:PackIcon
+                                    Kind="FloppyDisc"
+                                    Height="24"
+                                    Width="24" />
+                                </Button>
 
-                        </StackPanel>
+                            </StackPanel>
+                            <materialDesign:Card x:Name="DragDropCard" UniformCornerRadius="10" Drop="DragDropCard_Drop" AllowDrop="True">
+                                <Border Padding="10">
+                                    <Grid>                                    
+                                        <Rectangle RadiusX="9" RadiusY="9" Fill="#00B2B2B2" Stroke="#FFB2B2B2" StrokeDashArray="1,2" StrokeThickness="2"/>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <TextBlock Text="Drag and Drop " FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FFB2B2B2"/>
+                                            <materialDesign:PackIcon Kind="SmileyCoolOutline" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFA88200"/>
+                                            <TextBlock Text=" Here" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FFB2B2B2"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </materialDesign:Card>
+                        </Grid>
                     </Border>
                 </Grid>
             </materialDesign:Card>
