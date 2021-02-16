@@ -50,6 +50,11 @@ namespace EmojiPacker.Utility
         {
             return JsonConvert.SerializeObject(emojiPack);
         }
+
+        internal void Dispose()
+        {
+            Emojis.Clear();
+        }
     }
 
     public class EmojiPack : INotifyPropertyChanged

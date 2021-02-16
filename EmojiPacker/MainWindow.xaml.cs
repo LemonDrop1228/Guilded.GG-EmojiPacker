@@ -1,5 +1,7 @@
 ﻿using EmojiPacker.TestHelpers;
+using EmojiPacker.Utility;
 using EmojiPacker.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Deployment.Application;
@@ -50,10 +52,64 @@ namespace EmojiPacker
         private void NewPackButton_Click(object sender, RoutedEventArgs e)
         {
             if (CurrentView != null)
+            {
                 CurrentView.CloseView();
+                CurrentView = null;
+            }
 
-            CurrentView = new CreateView();
-            ContentViewer.Child = CurrentView;
+            // CurrentView = new CreateView(CreateTestPack.GetNewPackWrapper());   // For testing only
+            ContentViewer.Child = CurrentView = new CreateView();
+        }
+
+        private void LoadPackButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var oFileDiag = new OpenFileDialog() { 
+                    CheckFileExists = true,
+                    CheckPathExists = true,
+                    Filter = "json | *.json"
+                };
+                if (oFileDiag.ShowDialog() == true)
+                {
+                    var packPath = oFileDiag.FileName;
+                    var jsonData = System.IO.File.ReadAllText(oFileDiag.FileName);
+
+                    if (CurrentView != null)
+                    {
+                        CurrentView.CloseView();
+                        CurrentView = null;
+                    }
+
+                    var emojiPack = PackImporter.Import(jsonData);
+                    if (emojiPack != null)
+                        ContentViewer.Child = CurrentView = new CreateView(emojiPack);
+                }
+            }
+            catch (Exception) { }
+        }
+
+        private void TitleColorZone_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
+        private void MainPackWindow_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                this.DragMove();
+        }
+
+        private void CloseAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (CurrentView != null)
+            {
+                CurrentView.CloseView();
+                CurrentView = null;
+            }
+
+            this.Close();
         }
     }
 }

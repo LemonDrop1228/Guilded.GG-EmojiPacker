@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
+using GalaSoft.MvvmLight.Command;
 
 namespace EmojiPacker.Views
 {
@@ -41,7 +42,7 @@ namespace EmojiPacker.Views
 
         public override void CloseView()
         {
-            
+            CurrentPack.Dispose();
         }
 
         private void AddEmoteButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +90,38 @@ namespace EmojiPacker.Views
 
             if (textBox != null && !string.IsNullOrEmpty(text))
                 textBox.Text = text;
+        }
+
+        public ICommand RemoveEmoji => new RelayCommand(o => {
+            CurrentPack.Emojis.Remove(o as EmojiDefinition);
+        }, o => true);
+    }
+
+    public class RelayCommand : ICommand
+    {
+        private Action<object> execute;
+        private Func<object, bool> canExecute;
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        {
+            this.execute = execute;
+            this.canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return this.canExecute == null || this.canExecute(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            this.execute(parameter);
         }
     }
 }
