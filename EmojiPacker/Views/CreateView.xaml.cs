@@ -92,7 +92,10 @@ namespace EmojiPacker.Views
                 textBox.Text = text;
         }
 
-        public ICommand RemoveEmoji => new RelayCommand(o => {
+
+
+        public ICommand RemoveEmoji => new RelayCommand(o =>
+        {
             CurrentPack.Emojis.Remove(o as EmojiDefinition);
         }, o => true);
 
