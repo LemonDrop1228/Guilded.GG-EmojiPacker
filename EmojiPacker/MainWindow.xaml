@@ -1,0 +1,63 @@
+﻿<Window x:Class="EmojiPacker.MainWindow"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:system="clr-namespace:System;assembly=mscorlib"
+                            xmlns:local="clr-namespace:EmojiPacker" xmlns:views="clr-namespace:EmojiPacker.Views"
+        mc:Ignorable="d" Height="743" Width="819.272"
+                            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+                            TextElement.FontWeight="Regular"
+                            TextElement.FontSize="13"
+                            TextOptions.TextFormattingMode="Ideal" 
+                            TextOptions.TextRenderingMode="Auto"        
+                            Background="{DynamicResource MaterialDesignPaper}" FontFamily="Segoe UI Semibold" WindowStartupLocation="CenterScreen"
+                            >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.175*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone
+            Grid.Row="0"
+          Mode="PrimaryDark"
+          Padding="16"
+          CornerRadius="3"
+          materialDesign:ShadowAssist.ShadowDepth="Depth3"
+          Margin="2">
+            <Grid>
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button x:Name="NewPackButton" HorizontalAlignment="Left" Margin="0 0 15 0"
+                      Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+                      ToolTip="Create new pack" Click="NewPackButton_Click">
+                                        <materialDesign:PackIcon
+                        Kind="PencilAdd"
+                        Height="24"
+                        Width="24" />
+                    </Button>
+                    <Button x:Name="LoadPackButton" HorizontalAlignment="Left"
+                      Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                      ToolTip="Load pack">
+                        <materialDesign:PackIcon
+                        Kind="Folder"
+                        Height="24"
+                        Width="24" />
+                    </Button>
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right"
+                Orientation="Horizontal">
+                <TextBlock
+                  VerticalAlignment="Center"
+                  Margin="16 0 0 0" Text="{Binding Path=TitleText}" FontSize="26"/>
+            </StackPanel>
+                
+            </Grid>
+        </materialDesign:ColorZone>
+
+        <Border Grid.Row="1" Padding="7" x:Name="ContentViewer"/>
+    </Grid>
+
+</Window>
