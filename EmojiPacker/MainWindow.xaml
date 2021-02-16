@@ -12,7 +12,7 @@
                             TextElement.FontSize="13"
                             TextOptions.TextFormattingMode="Ideal" 
                             TextOptions.TextRenderingMode="Auto"        
-                            Background="{DynamicResource MaterialDesignPaper}" FontFamily="Segoe UI Semibold" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainPackWindow_MouseDown"
+                            Background="{DynamicResource MaterialDesignPaper}" FontFamily="Segoe UI Semibold" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" MouseDown="MainPackWindow_MouseDown" Topmost="True"
                             >
     <Grid>
         <Grid.RowDefinitions>

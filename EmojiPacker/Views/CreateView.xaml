@@ -32,40 +32,40 @@
 
 
                             <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                <ListBox x:Name="listBox" HorizontalContentAlignment="Stretch"
+                                <ItemsControl x:Name="listBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Center"
                                 ItemsSource="{Binding CurrentPack.Emojis, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CreateView}}}" >
-                                    <ListBox.ItemTemplate>
+                                    <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <materialDesign:Card Padding="3">
+                                            <materialDesign:Card Padding="3" Margin="8">
                                                 <Grid>
                                                     <StackPanel Orientation="Vertical">
+                                                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                                                                HorizontalAlignment="Stretch" materialDesign:HintAssist.Hint="Emoji Name" materialDesign:TextFieldAssist.HasClearButton="True"
+                                                                Text="{Binding Name}" FontWeight="Bold" FontSize="14" TextAlignment="Left" VerticalAlignment="Center"/>
+
+                                                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True"
+                                                                AllowDrop="True" materialDesign:HintAssist.Hint="Emoji Url" Text="{Binding Url}" FontWeight="Bold" 
+                                                                FontSize="14" TextAlignment="Left" VerticalAlignment="Center" TextChanged="TextBox_TextChanged_1"
+                                                                Drop="TextBox_Drop" PreviewDrop="TextBox_PreviewDrop" HorizontalAlignment="Stretch"/>
+                                                        <Image gif:ImageBehavior.AnimatedSource="{Binding Url}" MaxHeight="50" MaxWidth="50" HorizontalAlignment="Center" Margin="0 10 0 5 "/>
+
                                                         <Button x:Name="RemoveEmojiButton"  Command="{Binding Path=DataContext.RemoveEmoji,RelativeSource={RelativeSource AncestorType={x:Type local:CreateView}}}"
                                                             Style="{StaticResource MaterialDesignRaisedAccentButton}"
-                                                            HorizontalAlignment="Right"
+                                                            HorizontalAlignment="Center" Margin="0 10 0 5"
                                                             ToolTip="Remove" CommandParameter="{Binding DataContext, RelativeSource={RelativeSource Self}}" >
-                                                            <materialDesign:PackIcon
-                                                                Kind="Close"
-                                                                Height="16"
-                                                                Width="16" />
+                                                            <TextBlock FontWeight="Bold" FontSize="14" Text="REMOVE"/>
                                                         </Button>
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" >
-                                                            <TextBlock Text="Name:" FontWeight="Bold" FontSize="14" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,7,0"/>
-                                                            <TextBox materialDesign:HintAssist.Hint="Name to be used as the tag" MinWidth="75" Text="{Binding Name}" FontWeight="Bold" FontSize="14" TextAlignment="Left" VerticalAlignment="Center" Foreground="#FFE29000"/>
-                                                        </StackPanel>
-                                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                                            <TextBlock Text="Url:" FontWeight="Bold" FontSize="14" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,7,0" HorizontalAlignment="Left"/>
-                                                            <TextBox AllowDrop="True" materialDesign:HintAssist.Hint="Url of the image" MinWidth="75" Text="{Binding Url}" FontWeight="Bold" 
-                                                                     FontSize="14" TextAlignment="Left" VerticalAlignment="Center" Foreground="#FFE29000" TextChanged="TextBox_TextChanged_1"
-                                                                     Drop="TextBox_Drop" PreviewDrop="TextBox_PreviewDrop" HorizontalAlignment="Left"/>
-                                                            <Image gif:ImageBehavior.AnimatedSource="{Binding Url}" MaxHeight="50" MaxWidth="50" HorizontalAlignment="Right" Margin="15 0 0 0 "/>
-                                                        </StackPanel>
                                                     </StackPanel>
                                                 </Grid>
                                             </materialDesign:Card>
                                         </DataTemplate>
-                                    </ListBox.ItemTemplate>
-
-                                </ListBox>
+                                    </ItemsControl.ItemTemplate>
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <UniformGrid Columns="3" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
                             </ScrollViewer>
                         </Grid>
                     </Border>                    
