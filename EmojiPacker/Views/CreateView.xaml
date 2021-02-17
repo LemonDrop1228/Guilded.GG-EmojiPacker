@@ -33,7 +33,9 @@
                             </materialDesign:Card>
 
 
-                            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                            <ScrollViewer 
+                                Grid.Row="1" 
+                                HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                                 <ItemsControl x:Name="listBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Center"
                                 ItemsSource="{Binding CurrentPack.Emojis, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CreateView}}}" >
                                     <ItemsControl.ItemTemplate>
@@ -128,6 +130,9 @@
                 </Grid>
             </materialDesign:Card>
         </Border>
+        
+        
+        
     </Grid>
 
 

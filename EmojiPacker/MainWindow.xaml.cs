@@ -111,5 +111,10 @@ namespace EmojiPacker
 
             this.Close();
         }
+
+        private void MinimizeAppButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
