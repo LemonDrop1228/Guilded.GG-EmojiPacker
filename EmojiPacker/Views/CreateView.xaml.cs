@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
 using GalaSoft.MvvmLight.Command;
+using System.Media;
 
 namespace EmojiPacker.Views
 {
@@ -99,7 +100,18 @@ namespace EmojiPacker.Views
         private void DragDropCard_Drop(object sender, DragEventArgs e)
         {
             string url = (string)e.Data.GetData(typeof(string));
+            EmojiIcon.DataContext = url;
+            PlayDropEffect();
             CurrentPack.Emojis.Add(new EmojiDefinition() { Url = url });
+        }
+
+        private void PlayDropEffect()
+        {
+            Stream s = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("EmojiPacker.Sfx.DragDropSFX.wav");
+            using (var sfx = new SoundPlayer(s))
+            {
+                sfx.Play();
+            }
         }
     }
 

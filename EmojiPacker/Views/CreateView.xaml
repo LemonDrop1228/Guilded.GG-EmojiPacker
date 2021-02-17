@@ -5,10 +5,12 @@
              xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EmojiPacker.Views" 
+             xmlns:local="clr-namespace:EmojiPacker.Views" xmlns:tz="http://schemas.abtsoftware.co.uk/transitionz" 
             xmlns:localConverters="clr-namespace:EmojiPacker.Converters"
             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="500"  Background="#00000000" MaxWidth="650">
+             d:DesignHeight="450" d:DesignWidth="500"  Background="#00000000" MaxWidth="650"
+            tz:Transitionz.Opacity="{tz:OpacityParams From=0, To=1, Duration=300, TransitionOn=Visibility}"
+            tz:Transitionz.Translate="{tz:TranslateParams From='0,70', To='0,0', Duration=300, TransitionOn=Visibility}">
     <Grid>
         <Border Padding="2">
             <materialDesign:Card Background="#FF646464" UniformCornerRadius="6" materialDesign:ShadowAssist.ShadowDepth="Depth4">
@@ -36,7 +38,10 @@
                                 ItemsSource="{Binding CurrentPack.Emojis, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:CreateView}}}" >
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <materialDesign:Card Padding="3" Margin="8">
+                                            <materialDesign:Card Padding="3" Margin="8" 
+                                                                tz:Transitionz.Opacity="{tz:OpacityParams Duration=200, From=0, To=1, TransitionOn=Loaded}"
+                                                                tz:Transitionz.Blur="{tz:BlurParams Duration=200, From=15, To=0, TransitionOn=Loaded}"
+                                                                 tz:Transitionz.Translate="{tz:TranslateParams From='0,70', To='0,0', Duration=200, TransitionOn=Loaded}">
                                                 <Grid>
                                                     <StackPanel Orientation="Vertical">
                                                         <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -108,7 +113,11 @@
                                         <Rectangle RadiusX="9" RadiusY="9" Fill="#00B2B2B2" Stroke="#FFB2B2B2" StrokeDashArray="1,2" StrokeThickness="2"/>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                             <TextBlock Text="Drag and Drop " FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FFB2B2B2"/>
-                                            <materialDesign:PackIcon Kind="SmileyCoolOutline" Width="30" Height="30" VerticalAlignment="Center" Foreground="#FFA88200"/>
+                                            <materialDesign:PackIcon x:Name="EmojiIcon" tz:Transitionz.LayoutScale="{tz:ScaleParams From='1,1', To='1.5, 1.5', AutoReverse=True, Duration=150, TransitionOn=DataContextChanged}"
+                                                Kind="SmileyCoolOutline" 
+                                                Width="30" 
+                                                Height="30" 
+                                                VerticalAlignment="Center" Foreground="#FFA88200"/>
                                             <TextBlock Text=" Here" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FFB2B2B2"/>
                                         </StackPanel>
                                     </Grid>
